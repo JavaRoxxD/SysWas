@@ -1,0 +1,107 @@
+
+<form style="align-items: center;">
+  <div class="mx-4 pt-3 my-3 p-3 rounded shadow" align="center">
+
+    <h1 class="h4 mb-3 text-center"
+        *ngIf="!estoqueInsumo.id || estoqueInsumo == null">
+      Cadastrar Estoque Insumo
+    </h1>
+
+    <h1 class="h4 mb-3 text-center"
+        *ngIf="estoqueInsumo.id">
+      Alterar Estoque Insumo
+    </h1>
+
+
+    <!--FIM ITEM descricao-->
+    <!-- 1 -->
+    <div class="center-items-custom px-5 mx-3">
+      <mat-form-field>
+        <input matInput type="number"
+               placeholder="Quantidade"
+               name="quantidade"
+               maxlength="2"
+               class=""
+               [formControl]="quantidadeFc"
+               [errorStateMatcher]="matcher"
+               [(ngModel)]="estoqueInsumo.quantidade" />
+
+
+        <mat-error *ngIf="quantidadeFc.hasError('required')">
+          Espessura é <strong>obrigatorio</strong>
+        </mat-error>
+      </mat-form-field>
+      </div>
+      <!--  2  -->
+      <div class="center-items-custom px-5 mx-3">
+        <mat-form-field>
+          <input matInput type="number"
+                 placeholder="Volume"
+                 name="volume"
+                 maxlength="2"
+                 class=""
+                 [formControl]="volumeFc"
+                 [errorStateMatcher]="matcher"
+                 [(ngModel)]="estoqueInsumo.volume" />
+
+
+          <mat-error *ngIf="volumeFc.hasError('required')">
+            Volume é <strong>obrigatorio</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="center-items-custom">
+
+        <!--SELECT-->
+
+        <mat-form-field>
+          <mat-label>Item</mat-label>
+          <mat-select [formControl]="itemFc" [(ngModel)]="selectedItem" [compareWith]="compareFn" required>
+
+            <mat-option *ngFor="let item of itens" [value]="item">
+              {{item.nome}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="itemFc.hasError('required')">
+            Tipo é <strong>obrigatorio</strong>
+          </mat-error>
+          <!--<mat-hint>{{Fc.value?.sound}}</mat-hint>-->
+        </mat-form-field>
+      </div>
+
+      <div class="container-fluid">
+
+        <button mat-raised-button class="px-5 mx-3 shadow-button rounded shadow"
+                type="submit" (click)="cadastrar()"
+                [disabled]="ativar_spinner || ( itemFc.invalid || volumeFc.invalid || quantidadeFc.invalid )"
+                *ngIf="!estoqueInsumo.id || estoqueInsumo == null">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+          Cadastrar
+        </button>
+
+        <button mat-raised-button class="px-5 mx-3 shadow-button rounded shadow"
+                type="submit" (click)="cadastrar()"
+                [disabled]="ativar_spinner || ( itemFc.invalid || volumeFc.invalid || quantidadeFc.invalid )"
+                *ngIf="estoqueInsumo.id">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+          Alterar
+        </button>
+
+
+        <span></span>
+
+        <button mat-raised-button class="px-5 mx-3" color="warn" type="submit" [routerLink]='["/pesquisa-estoque-insumo"]'>
+          Cancelar
+        </button>
+
+      </div>
+
+      <div class="alert alert-danger" *ngIf="mensagem">
+        {{mensagem}}
+      </div>
+
+
+
+    </div>
+</form>

@@ -1,0 +1,89 @@
+
+<form style="align-items: center;">
+  <div class="mx-4 pt-3 my-3 p-3 rounded shadow" align="center">
+
+    <h1 class="h4 mb-3 text-center"
+        *ngIf="!contato.id || contato == null">
+      Cadastrar Madeira
+    </h1>
+
+    <h1 class="h4 mb-3 text-center"
+        *ngIf="contato.id">
+      Alterar Madeira
+    </h1>
+
+
+    <!--ITEM descricao-->
+    <div class="center-items-custom">
+      <mat-form-field class="mid-center">
+        <input matInput type="text"
+               placeholder="Nome"
+               name="nome"
+               [formControl]="nomeFc"
+               [errorStateMatcher]="matcher"
+               [(ngModel)]="contato.nome" />
+        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+
+        <mat-error *ngIf="nomeFc.hasError('required')">
+          Nome é <strong>obrigatorio!</strong>
+        </mat-error>
+        <!--<mat-error *ngIf="descricaoFc.hasError('minlength')">
+          No minimo <strong>10 caracteres!</strong>
+        </mat-error>-->
+
+      </mat-form-field>
+    </div>
+
+    <!--FIM ITEM descricao-->
+
+
+
+    <div class="container-fluid">
+
+      <button mat-raised-button class="px-5 mx-3 shadow-button rounded shadow"
+              type="submit" (click)="cadastrar()"
+              [disabled]="ativar_spinner || (nomeFc.invalid )"
+              *ngIf="!contato.id || contato == null">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+        Cadastrar
+      </button>
+
+      <button mat-raised-button class="px-5 mx-3 shadow-button rounded shadow"
+              type="submit" (click)="cadastrar()"
+              [disabled]="ativar_spinner || (nomeFc.invalid )"
+              *ngIf="contato.id">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+        Alterar
+      </button>
+
+
+      <span></span>
+
+      <button mat-raised-button class="px-5 mx-3" color="warn" type="submit" [routerLink]='["/pesquisa-contato"]'>
+        Cancelar
+      </button>
+
+    </div>
+
+    <div class="alert alert-danger" *ngIf="mensagem">
+      {{mensagem}}
+    </div>
+
+
+
+
+
+
+
+    <!--id: number;
+    espessura: number;
+    largura: number;
+    comprimento: number;
+    preBenef: boolean;
+    tipoId: number;
+    especieId: number;
+    controleId: number;-->
+
+
+  </div>
+</form>

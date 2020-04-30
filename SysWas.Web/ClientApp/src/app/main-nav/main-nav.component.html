@@ -1,0 +1,151 @@
+<div class="alternative divH" [class.alternative]="otherTheme">
+  <mat-sidenav-container class="divH sidenav-container">
+    <mat-sidenav #drawer
+                 class="sidenav"
+                 [ngClass]="{hidden: (isHandset$ | async)!.matches}"
+                 fixedInViewport="false"
+                 [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+                 [mode]="(isHandset$ | async) ? 'over' : 'side'"
+                 [opened]="(isHandset$ | async) === false">
+      <mat-toolbar class="shadow">Menu</mat-toolbar>
+
+      <mat-nav-list [routerLinkActive]='["link-active"]'>
+
+        <a mat-list-item [routerLink]='["/"]'>
+          <mat-icon class="icon-custom">home   </mat-icon>
+          Inicio
+        </a>
+
+
+        <mat-list-item [matMenuTriggerFor]="madeirasMenu">
+          <mat-icon>unfold_more</mat-icon>
+          <a matline>Madeiras</a>
+        </mat-list-item>
+        <mat-menu #madeirasMenu="matMenu">
+          <mat-nav-list>
+            <a mat-list-item [routerLink]='["/pesquisa-madeira"]'>Madeira</a>
+            <a mat-list-item [routerLink]='["/pesquisa-tipo-madeira"]'>Tipo Madeira</a>
+            <a mat-list-item [routerLink]='["/pesquisa-especie-madeira"]'>Especie Madeira</a>
+            <a mat-list-item [routerLink]='["/pesquisa-controle-madeira"]'>Controle Madeira</a>
+          </mat-nav-list>
+        </mat-menu>
+
+        <mat-list-item [matMenuTriggerFor]="insumosMenu">
+          <mat-icon>unfold_more</mat-icon>
+          <a matline>Insumos</a>
+        </mat-list-item>
+        <mat-menu #insumosMenu="matMenu">
+          <mat-nav-list>
+            <a mat-list-item [routerLink]='["/pesquisa-estoque-insumo"]'>Estoque Insumo</a>
+            <a mat-list-item [routerLink]='["/pesquisa-insumo"]'>Insumo</a>
+            <a mat-list-item [routerLink]='["/pesquisa-tipo-insumo"]'>Tipo Insumo</a>
+            <a mat-list-item [routerLink]='["/pesquisa-controle-insumo"]'>Controle Insumo</a>
+          </mat-nav-list>
+        </mat-menu>
+
+        <mat-list-item [matMenuTriggerFor]="empresasMenu">
+          <mat-icon>unfold_more</mat-icon>
+          <a matline>Empresas</a>
+        </mat-list-item>
+        <mat-menu #empresasMenu="matMenu">
+          <mat-nav-list>
+            <a mat-list-item [routerLink]='["/pesquisa-empresa"]'>Empresa</a>
+
+          </mat-nav-list>
+        </mat-menu>
+
+        <mat-list-item [matMenuTriggerFor]="fornecedorMenu">
+          <mat-icon>unfold_more</mat-icon>
+          <a matline>Fornecedores</a>
+        </mat-list-item>
+        <mat-menu #fornecedorMenu="matMenu">
+          <mat-nav-list>
+            <a mat-list-item [routerLink]='["/pesquisa-fornecedor"]'>Fornecedor</a>
+
+          </mat-nav-list>
+        </mat-menu>
+
+        <!--<a mat-list-item [routerLink]='["/pesquisa-madeira"]'>Madeira</a>
+  <a mat-list-item [routerLink]='["/pesquisa-tipo-madeira"]'>Tipo Madeira</a>
+  <a mat-list-item [routerLink]='["/pesquisa-especie-madeira"]'>Especie Madeira</a>
+  <a mat-list-item [routerLink]='["/pesquisa-controle-madeira"]'>Controle Madeira</a>-->
+
+        <a mat-list-item [routerLink]='["/cadastro-usuario"]'>Cadastro de Usuários</a>
+        <a mat-list-item [routerLink]='["/app-qrcode"]'>QRCode</a>
+        <a mat-list-item [routerLink]='["/app-qrcode-reader"]'>QRCode Reader</a>
+
+
+
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary" class="ml-auto">
+        <!--<button #button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>-->
+
+        <button type="button"
+                aria-label="Toggle sidenav"
+                mat-icon-button
+                (click)="drawer.toggle()">
+
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+
+        <span>SyS</span>
+        <span class="spacer"></span>
+
+        <button mat-button class="nav-link" [routerLink]='["/entrar"]' *ngIf="!usuarioLogado()">
+          <mat-icon>account_circle</mat-icon>
+          Entrar
+        </button>
+
+
+
+        <!--<form class="nav-link dropdown" *ngIf="usuarioLogado()">
+
+    <button mat-button class="nav-link dropdown-toggle" role="button" id="linkMenu" href="#"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{usuario.nome}}
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="linkMenu">
+      <li class="dropdown-item" role="menu" [routerLink]='["/sair"]' (click)="sair()">Sair</li>
+
+    </ul>
+
+  </form>-->
+       
+
+        <button mat-button [matMenuTriggerFor]="menu" *ngIf="usuarioLogado()">
+        {{usuario.nome}}
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item [routerLink]='["/sair"]' (click)="sair()">Sair</button>
+          
+        </mat-menu>
+
+        <!--<button mat-button class="nav-link" [routerLink]='["/entrar"]' (click)="sair()" *ngIf="usuarioLogado()">
+    <mat-icon>account_circle</mat-icon>
+    Sair
+  </button>-->
+
+        <section class="exemple-section">
+          <button (click)="changeTheme()" mat-icon-button><mat-icon>lightbulb</mat-icon></button>
+          <!--<button mat-icon-button><mat-icon>account_circle</mat-icon></button>-->
+        </section>
+
+
+      </mat-toolbar>
+      <!-- Add Content Here -->
+      <div style="height: 100%;">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

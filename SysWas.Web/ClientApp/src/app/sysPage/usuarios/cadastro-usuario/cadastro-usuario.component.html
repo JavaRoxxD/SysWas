@@ -1,0 +1,145 @@
+<main role="main" class="container text-center">
+
+
+  <form class="form-signin">
+    <!--<img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">-->
+    <h1 class="h3 mb-3 font-weight-normal">Cadastrar Usuário</h1>
+
+
+
+
+    <!--INICIO EMAIL-->
+    <label for="inputEmail" class="sr-only">Endereço de email</label>
+    <input type="email" id="inputEmail" name="email"
+           placeholder="Email"
+           class="form-control mb-2"
+           [ngClass]="{
+                'is-invalid' : email.invalid && (email.dirty || email.touched),
+                'is-valid' : email.valid && (email.dirty || email.touched)
+             }"
+           [(ngModel)]="usuario.email"
+           #email="ngModel"
+           email
+           required />
+
+    <!-- AQUI A MENSSAGEM DE ERRO -->
+    <div class="invalid-feedback mb-2" *ngIf="email.invalid && (email.dirty || email.touched)">
+      <div *ngIf="email.errors.required">Email é de preenchimento obrigatório!</div>
+      <div *ngIf="email.errors.email">Email de formato invalido!</div>
+
+    </div>
+    <!-- FIM EMAIL -->
+    <!--INICIO SENHA-->
+    <label for="inputPassword" class="sr-only">Senha</label>
+    <input type="password" id="inputPassword" name="senha"
+           placeholder="Senha"
+           class="form-control mb-2"
+           [ngClass]="{
+                'is-invalid' : senha.invalid && (senha.dirty || senha.touched),
+                'is-valid' : senha.valid && (senha.dirty || senha.touched)
+             }"
+           [(ngModel)]="usuario.senha"
+           #senha="ngModel"
+           required />
+
+    <!-- AQUI A MENSSAGEM DE ERRO -->
+    <div class="invalid-feedback mb-2" *ngIf="senha.invalid && (senha.dirty || senha.touched)">
+      <div *ngIf="senha.errors.required">Senha deve ser informada!</div>
+
+    </div>
+    <!-- FIM SENHA -->
+    <!--INICIO NOME-->
+
+    <label for="inputNome" class="sr-only">Nome</label>
+    <input type="text" id="inputNome" name="nome"
+           placeholder="Nome"
+           class="form-control mb-2"
+           [ngClass]="{
+                'is-invalid' : nome.invalid && (nome.dirty || nome.touched),
+                'is-valid' : nome.valid && (nome.dirty || nome.touched)
+             }"
+           [(ngModel)]="usuario.nome"
+           #nome="ngModel"
+           required />
+
+    <!-- AQUI A MENSSAGEM DE ERRO -->
+    <div class="invalid-feedback mb-2" *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+      <div *ngIf="nome.errors.required">Nome é de preenchimento obrigatório!</div>
+
+
+    </div>
+    <!-- FIM NOME -->
+    <!--INICIO SOBRENOME-->
+    <label for="inputSobreNome" class="sr-only">Nome</label>
+    <input type="text" id="inputSobreNome" name="sobreNome"
+           placeholder="Sobrenome"
+           class="form-control mb-2"
+           [ngClass]="{
+                'is-invalid' : sobreNome.invalid && (sobreNome.dirty || sobreNome.touched),
+                'is-valid' : sobreNome.valid && (sobreNome.dirty || sobreNome.touched)
+             }"
+           [(ngModel)]="usuario.sobreNome"
+           #sobreNome="ngModel"
+           required />
+
+    <!-- AQUI A MENSSAGEM DE ERRO -->
+    <div class="invalid-feedback mb-2" *ngIf="sobreNome.invalid && (sobreNome.dirty || sobreNome.touched)">
+      <div *ngIf="sobreNome.errors.required">SobreNome é de preenchimento obrigatório!</div>
+
+
+    </div>
+    <!-- FIM SOBRENOME -->
+    <!--INICIO SEXO-->
+    <label for="inputSexo" class="sr-only">Nome</label>
+    <input type="number" id="inputSexo" name="sexo"
+           placeholder="Sexo"
+           class="form-control mb-2"
+           [ngClass]="{
+                'is-invalid' : sexo.invalid && (sexo.dirty || sexo.touched),
+                'is-valid' : sexo.valid && (sexo.dirty || sexo.touched)
+             }"
+           [(ngModel)]="usuario.sexoId"
+           #sexo="ngModel"
+           required />
+
+    <!-- AQUI A MENSSAGEM DE ERRO -->
+    <div class="invalid-feedback mb-2" *ngIf="sexo.invalid && (sexo.dirty || sexo.touched)">
+      <div *ngIf="sexo.errors.required">Sexo é de preenchimento obrigatório!</div>
+
+
+    </div>
+    <!-- FIM SEXO -->
+
+
+
+    <button mat-raised-button type="submit" (click)="cadastrar()" [disabled]="ativar_spinner">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+      Cadastrar
+
+    </button>
+    <button mat-raised-button color="warn" type="submit" [routerLink]='["/"]'>
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+      Cancelar
+
+    </button>
+
+
+
+    <div class="alert alert-danger" *ngIf="mensagem">
+      {{mensagem}}
+    </div>
+
+    <div class="alert alert-success" *ngIf="usuarioCadastrado">
+
+      Usuário cadastrado com sucesso!! <a class="alert-link" [routerLink]='["/"]'>Clique aqui</a>
+
+    </div>
+
+
+    <!--<img src="../../../assets/img/check.jpg" />-->
+    <p class="mt-5 mb-3">© 2020</p>
+
+
+  </form>
+
+</main>

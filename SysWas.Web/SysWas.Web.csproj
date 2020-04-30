@@ -1,0 +1,418 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+
+    <!-- Set this to true if you enable server-side prerendering -->
+    <BuildServerSideRenderer>false</BuildServerSideRenderer>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\app\counter\**" />
+    <Compile Remove="ClientApp\src\app\fetch-data\**" />
+    <Compile Remove="ClientApp\src\app\model\estoqueInsumos\**" />
+    <Compile Remove="ClientApp\src\app\services\estoqueInsumos\**" />
+    <Compile Remove="ClientApp\src\app\sidebar-menu\**" />
+    <Compile Remove="ClientApp\src\app\sysPage\estoqueInsumos\tipo-estoqueInsumo\**" />
+    <Compile Remove="ClientApp\src\app\sysPage\usuarios\cadastro\**" />
+    <Compile Remove="ClientApp\src\styles\**" />
+    <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\app\counter\**" />
+    <Content Remove="ClientApp\src\app\fetch-data\**" />
+    <Content Remove="ClientApp\src\app\model\estoqueInsumos\**" />
+    <Content Remove="ClientApp\src\app\services\estoqueInsumos\**" />
+    <Content Remove="ClientApp\src\app\sidebar-menu\**" />
+    <Content Remove="ClientApp\src\app\sysPage\estoqueInsumos\tipo-estoqueInsumo\**" />
+    <Content Remove="ClientApp\src\app\sysPage\usuarios\cadastro\**" />
+    <Content Remove="ClientApp\src\styles\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\counter\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\fetch-data\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\model\estoqueInsumos\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\services\estoqueInsumos\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\sidebar-menu\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\sysPage\estoqueInsumos\tipo-estoqueInsumo\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\sysPage\usuarios\cadastro\**" />
+    <EmbeddedResource Remove="ClientApp\src\styles\**" />
+    <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\src\app\counter\**" />
+    <None Remove="ClientApp\src\app\fetch-data\**" />
+    <None Remove="ClientApp\src\app\model\estoqueInsumos\**" />
+    <None Remove="ClientApp\src\app\services\estoqueInsumos\**" />
+    <None Remove="ClientApp\src\app\sidebar-menu\**" />
+    <None Remove="ClientApp\src\app\sysPage\estoqueInsumos\tipo-estoqueInsumo\**" />
+    <None Remove="ClientApp\src\app\sysPage\usuarios\cadastro\**" />
+    <None Remove="ClientApp\src\styles\**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\authorization\guard.routes.ts" />
+    <None Remove="ClientApp\src\app\counter\counter.component.html" />
+    <None Remove="ClientApp\src\app\counter\counter.component.spec.ts" />
+    <None Remove="ClientApp\src\app\counter\counter.component.ts" />
+    <None Remove="ClientApp\src\app\fetch-data\fetch-data.component.html" />
+    <None Remove="ClientApp\src\app\fetch-data\fetch-data.component.ts" />
+    <None Remove="ClientApp\src\app\model\cep\cidade.ts" />
+    <None Remove="ClientApp\src\app\model\cep\endereco.ts" />
+    <None Remove="ClientApp\src\app\model\cep\estado.ts" />
+    <None Remove="ClientApp\src\app\model\compras\estadoPedido.ts" />
+    <None Remove="ClientApp\src\app\model\compras\listaInsumo.ts" />
+    <None Remove="ClientApp\src\app\model\compras\listaMadeira.ts" />
+    <None Remove="ClientApp\src\app\model\compras\notaFiscal.ts" />
+    <None Remove="ClientApp\src\app\model\compras\pedido.ts" />
+    <None Remove="ClientApp\src\app\model\empresas\empresa.ts" />
+    <None Remove="ClientApp\src\app\model\financeiro\controleSaldo.ts" />
+    <None Remove="ClientApp\src\app\model\financeiro\custo.ts" />
+    <None Remove="ClientApp\src\app\model\financeiro\despesa.ts" />
+    <None Remove="ClientApp\src\app\model\financeiro\dre.ts" />
+    <None Remove="ClientApp\src\app\model\financeiro\listaBancoEmpresa.ts" />
+    <None Remove="ClientApp\src\app\model\financeiro\receita.ts" />
+    <None Remove="ClientApp\src\app\model\financeiro\tipoCusto.ts" />
+    <None Remove="ClientApp\src\app\model\financeiro\tipoDespesa.ts" />
+    <None Remove="ClientApp\src\app\model\financeiro\tipoReceita.ts" />
+    <None Remove="ClientApp\src\app\model\fornecedores\fornecedor.ts" />
+    <None Remove="ClientApp\src\app\model\fornecedores\listaBancaria.ts" />
+    <None Remove="ClientApp\src\app\model\fornecedores\listaContato.ts" />
+    <None Remove="ClientApp\src\app\model\fornecedores\tipoFornecedor.ts" />
+    <None Remove="ClientApp\src\app\model\fretes\frete.ts" />
+    <None Remove="ClientApp\src\app\model\fretes\itemTabelaFrete.ts" />
+    <None Remove="ClientApp\src\app\model\fretes\motorista.ts" />
+    <None Remove="ClientApp\src\app\model\fretes\tabelaFrete.ts" />
+    <None Remove="ClientApp\src\app\model\fretes\transportadora.ts" />
+    <None Remove="ClientApp\src\app\model\fretes\veiculo.ts" />
+    <None Remove="ClientApp\src\app\model\insumos\controleInsumo.ts" />
+    <None Remove="ClientApp\src\app\model\insumos\estoqueInsumo.ts" />
+    <None Remove="ClientApp\src\app\model\insumos\insumo.ts" />
+    <None Remove="ClientApp\src\app\model\insumos\tipoInsumo.ts" />
+    <None Remove="ClientApp\src\app\model\usuario.ts" />
+    <None Remove="ClientApp\src\app\model\usuarios\historico.ts" />
+    <None Remove="ClientApp\src\app\model\usuarios\permissao.ts" />
+    <None Remove="ClientApp\src\app\model\utilitarios\banco.ts" />
+    <None Remove="ClientApp\src\app\model\utilitarios\contato.ts" />
+    <None Remove="ClientApp\src\app\model\utilitarios\email.ts" />
+    <None Remove="ClientApp\src\app\model\utilitarios\estadoAprovacao.ts" />
+    <None Remove="ClientApp\src\app\model\utilitarios\formaPagamento.ts" />
+    <None Remove="ClientApp\src\app\model\utilitarios\logReg.ts" />
+    <None Remove="ClientApp\src\app\model\utilitarios\secEdit.ts" />
+    <None Remove="ClientApp\src\app\model\utilitarios\sexo.ts" />
+    <None Remove="ClientApp\src\app\model\utilitarios\telefone.ts" />
+    <None Remove="ClientApp\src\app\services\cep\cidade.service.ts" />
+    <None Remove="ClientApp\src\app\services\cep\cidade.ts" />
+    <None Remove="ClientApp\src\app\services\cep\endereco.service.ts" />
+    <None Remove="ClientApp\src\app\services\cep\endereco.ts" />
+    <None Remove="ClientApp\src\app\services\cep\estado.service.ts" />
+    <None Remove="ClientApp\src\app\services\cep\estado.ts" />
+    <None Remove="ClientApp\src\app\services\compras\estadoPedido.service.ts" />
+    <None Remove="ClientApp\src\app\services\compras\estadoPedido.ts" />
+    <None Remove="ClientApp\src\app\services\compras\listaInsumo.service.ts" />
+    <None Remove="ClientApp\src\app\services\compras\listaInsumo.ts" />
+    <None Remove="ClientApp\src\app\services\compras\listaMadeira.service.ts" />
+    <None Remove="ClientApp\src\app\services\compras\listaMadeira.ts" />
+    <None Remove="ClientApp\src\app\services\compras\notaFiscal.service.ts" />
+    <None Remove="ClientApp\src\app\services\compras\notaFiscal.ts" />
+    <None Remove="ClientApp\src\app\services\compras\pedido.service.ts" />
+    <None Remove="ClientApp\src\app\services\compras\pedido.ts" />
+    <None Remove="ClientApp\src\app\services\empresas\empresa.service.ts" />
+    <None Remove="ClientApp\src\app\services\financeiro\controleSaldo.service.ts" />
+    <None Remove="ClientApp\src\app\services\financeiro\controleSaldo.ts" />
+    <None Remove="ClientApp\src\app\services\financeiro\custo.service.ts" />
+    <None Remove="ClientApp\src\app\services\financeiro\custo.ts" />
+    <None Remove="ClientApp\src\app\services\financeiro\despesa.service.ts" />
+    <None Remove="ClientApp\src\app\services\financeiro\despesa.ts" />
+    <None Remove="ClientApp\src\app\services\financeiro\dre.service.ts" />
+    <None Remove="ClientApp\src\app\services\financeiro\dre.ts" />
+    <None Remove="ClientApp\src\app\services\financeiro\listaBancoEmpresa.service.ts" />
+    <None Remove="ClientApp\src\app\services\financeiro\listaBancoEmpresa.ts" />
+    <None Remove="ClientApp\src\app\services\financeiro\receita.service.ts" />
+    <None Remove="ClientApp\src\app\services\financeiro\receita.ts" />
+    <None Remove="ClientApp\src\app\services\financeiro\tipoCusto.service.ts" />
+    <None Remove="ClientApp\src\app\services\financeiro\tipoCusto.ts" />
+    <None Remove="ClientApp\src\app\services\financeiro\tipoDespesa.service.ts" />
+    <None Remove="ClientApp\src\app\services\financeiro\tipoDespesa.ts" />
+    <None Remove="ClientApp\src\app\services\financeiro\tipoReceita.service.ts" />
+    <None Remove="ClientApp\src\app\services\financeiro\tipoReceita.ts" />
+    <None Remove="ClientApp\src\app\services\fornecedores\fornecedor.service.ts" />
+    <None Remove="ClientApp\src\app\services\fornecedores\fornecedor.ts" />
+    <None Remove="ClientApp\src\app\services\fornecedores\listaBancaria.service.ts" />
+    <None Remove="ClientApp\src\app\services\fornecedores\listaBancaria.ts" />
+    <None Remove="ClientApp\src\app\services\fornecedores\listaContato.service.ts" />
+    <None Remove="ClientApp\src\app\services\fornecedores\listaContato.ts" />
+    <None Remove="ClientApp\src\app\services\fornecedores\tipoFornecedor.service.ts" />
+    <None Remove="ClientApp\src\app\services\fornecedores\tipoFornecedor.ts" />
+    <None Remove="ClientApp\src\app\services\fretes\frete.service.ts" />
+    <None Remove="ClientApp\src\app\services\fretes\frete.ts" />
+    <None Remove="ClientApp\src\app\services\fretes\itemTabelaFrete.service.ts" />
+    <None Remove="ClientApp\src\app\services\fretes\itemTabelaFrete.ts" />
+    <None Remove="ClientApp\src\app\services\fretes\motorista.service.ts" />
+    <None Remove="ClientApp\src\app\services\fretes\motorista.ts" />
+    <None Remove="ClientApp\src\app\services\fretes\tabelaFrete.service.ts" />
+    <None Remove="ClientApp\src\app\services\fretes\tabelaFrete.ts" />
+    <None Remove="ClientApp\src\app\services\fretes\transportadora.service.ts" />
+    <None Remove="ClientApp\src\app\services\fretes\transportadora.ts" />
+    <None Remove="ClientApp\src\app\services\fretes\veiculo.service.ts" />
+    <None Remove="ClientApp\src\app\services\fretes\veiculo.ts" />
+    <None Remove="ClientApp\src\app\services\insumos\controleInsumo.service.ts" />
+    <None Remove="ClientApp\src\app\services\insumos\controleInsumo.ts" />
+    <None Remove="ClientApp\src\app\services\insumos\estoqueInsumo.service.ts" />
+    <None Remove="ClientApp\src\app\services\insumos\estoqueInsumo.ts" />
+    <None Remove="ClientApp\src\app\services\insumos\insumo.service.ts" />
+    <None Remove="ClientApp\src\app\services\insumos\insumo.ts" />
+    <None Remove="ClientApp\src\app\services\insumos\tipoInsumo.service.ts" />
+    <None Remove="ClientApp\src\app\services\insumos\tipoInsumo.ts" />
+
+    <None Remove="ClientApp\src\app\services\usuarios\historico.service.ts" />
+
+    <None Remove="ClientApp\src\app\services\usuarios\permissao.service.ts" />
+    <None Remove="ClientApp\src\app\services\usuarios\usuario.service.ts" />
+    <None Remove="ClientApp\src\app\services\utilitarios\banco.service.ts" />
+    <None Remove="ClientApp\src\app\services\utilitarios\contato.service.ts" />
+    <None Remove="ClientApp\src\app\services\utilitarios\email.service.ts" />
+    <None Remove="ClientApp\src\app\services\utilitarios\estadoAprovacao.service.ts" />
+    <None Remove="ClientApp\src\app\services\utilitarios\formaPagamento.service.ts" />
+    <None Remove="ClientApp\src\app\services\utilitarios\logReg.service.ts" />
+    <None Remove="ClientApp\src\app\services\utilitarios\secEdit.service.ts" />
+    <None Remove="ClientApp\src\app\services\utilitarios\sexo.service.ts" />
+    <None Remove="ClientApp\src\app\services\utilitarios\telefone.service.ts" />
+
+    <None Remove="ClientApp\src\app\sidebar-menu\sidebar-menu.component.css" />
+    <None Remove="ClientApp\src\app\sidebar-menu\sidebar-menu.component.html" />
+    <None Remove="ClientApp\src\app\sidebar-menu\sidebar-menu.component.ts" />
+    <None Remove="ClientApp\src\app\sysPage\cep\cidade\cadastro.cidade\cadastro.cidade.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\cep\cidade\pesquisa.cidade\pesquisa.cidade.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\cep\endereco\cadastro.endereco\cadastro.endereco.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\cep\endereco\pesquisa.endereco\pesquisa.endereco.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\cep\estado\cadastro.estado\cadastro.estado.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\cep\estado\pesquisa.estado\pesquisa.estado.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\compras\estado-pedido\cadastro.estado-pedido\cadastro.estado-pedido.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\compras\estado-pedido\pesquisa.estado-pedido\pesquisa.estado-pedido.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\compras\pedido\cadastro.pedido\cadastro.pedido.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\compras\pedido\pesquisa.pedido\pesquisa.pedido.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\empresas\empresa\cadastro.empresa\cadastro.empresa.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\empresas\empresa\pesquisa.empresa\pesquisa.empresa.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\financeiro\controle-saldo\cadastro.controle-saldo\cadastro.controle-saldo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\financeiro\controle-saldo\pesquisa.controle-saldo\pesquisa.controle-saldo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\financeiro\custo\cadastro.custo\cadastro.custo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\financeiro\custo\pesquisa.custo\pesquisa.custo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\financeiro\despesa\cadastro.despesa\cadastro.despesa.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\financeiro\despesa\pesquisa.despesa\pesquisa.despesa.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\financeiro\dre\cadastro.dre\cadastro.dre.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\financeiro\dre\pesquisa.dre\pesquisa.dre.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\financeiro\lista-banco-empresa\cadastro.lista-banco-empresa\cadastro.lista-banco-empresa.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\financeiro\lista-banco-empresa\pesquisa.lista-banco-empresa\pesquisa.lista-banco-empresa.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\financeiro\receita\cadastro.receita\cadastro.receita.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\financeiro\receita\pesquisa.receita\pesquisa.receita.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\financeiro\tipo-custo\cadastro.tipo-custo\cadastro.tipo-custo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\financeiro\tipo-custo\pesquisa.tipo-custo\pesquisa.tipo-custo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\financeiro\tipo-despesa\cadastro.tipo-despesa\cadastro.tipo-despesa.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\financeiro\tipo-despesa\pesquisa.tipo-despesa\pesquisa.tipo-despesa.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\financeiro\tipo-receita\cadastro.tipo-receita\cadastro.tipo-receita.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\financeiro\tipo-receita\pesquisa.tipo-receita\pesquisa.tipo-receita.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\fornecedores\fornecedor\cadastro.fornecedor\cadastro.fornecedor.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\fornecedores\fornecedor\pesquisa.fornecedor\pesquisa.fornecedor.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\fornecedores\tipo-fornecedor\cadastro.tipo-fornecedor\cadastro.tipo-fornecedor.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\fornecedores\tipo-fornecedor\pesquisa.tipo-fornecedor\pesquisa.tipo-fornecedor.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\fretes\frete\cadastro.frete\cadastro.frete.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\fretes\frete\pesquisa.frete\pesquisa.frete.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\fretes\item-tabela-frete\cadastro.item-tabela-frete\cadastro.item-tabela-frete.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\fretes\item-tabela-frete\pesquisa.item-tabela-frete\pesquisa.item-tabela-frete.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\fretes\motorista\cadastro.motorista\cadastro.motorista.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\fretes\motorista\pesquisa.motorista\pesquisa.motorista.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\fretes\tabela-frete\cadastro.tabela-frete\cadastro.tabela-frete.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\fretes\tabela-frete\pesquisa.tabela-frete\pesquisa.tabela-frete.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\fretes\transportadora\cadastro.transportadora\cadastro.transportadora.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\fretes\veiculo\cadastro.veiculo\cadastro.veiculo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\fretes\veiculo\pesquisa.veiculo\pesquisa.veiculo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\insumos\controle-insumo\cadastro.controle-insumo\cadastro.controle-insumo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\insumos\controle-insumo\pesquisa.controle-insumo\pesquisa.controle-insumo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\insumos\estoque-insumo\cadastro.estoque-insumo\cadastro.estoque-insumo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\insumos\estoque-insumo\pesquisa.estoque-insumo\pesquisa.estoque-insumo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\insumos\insumo\cadastro.insumo\cadastro.insumo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\insumos\insumo\pesquisa.insumo\pesquisa.insumo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\insumos\tipo-insumo\cadastro.tipo-insumo\cadastro.tipo-insumo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\insumos\tipo-insumo\pesquisa.tipo-insumo\pesquisa.tipo-insumo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\estoqueInsumos\controle-estoqueInsumo\cadastro\cadastro.controle-estoqueInsumo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\estoqueInsumos\controle-estoqueInsumo\pesquisa\pesquisa.controle-estoqueInsumo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\estoqueInsumos\especie-estoqueInsumo\cadastro\cadastro.especie-estoqueInsumo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\estoqueInsumos\especie-estoqueInsumo\pesquisa\pesquisa.especie-estoqueInsumo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\estoqueInsumos\fardo\cadastro\cadastro.lote.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\estoqueInsumos\fardo\pesquisa\pesquisa.lote.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\estoqueInsumos\lote\cadastro\cadastro.lote.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\estoqueInsumos\lote\pesquisa\pesquisa.lote.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\estoqueInsumos\tipo-estoqueInsumo\pesquisa-tipo-estoqueInsumo\pesquisa-tipo-estoqueInsumo.component.css" />
+    <None Remove="ClientApp\src\app\sysPage\estoqueInsumos\tipo-estoqueInsumo\pesquisa-tipo-estoqueInsumo\pesquisa-tipo-estoqueInsumo.component.html" />
+    <None Remove="ClientApp\src\app\sysPage\estoqueInsumos\tipo-estoqueInsumo\pesquisa-tipo-estoqueInsumo\pesquisa-tipo-estoqueInsumo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\estoqueInsumos\tipo-estoqueInsumo\pesquisa-tipo-estoqueInsumo\pesquisa-tipo-estoqueInsumo.component.ts" />
+    <None Remove="ClientApp\src\app\sysPage\usuarios\cadastro\cadastro.component.css" />
+    <None Remove="ClientApp\src\app\sysPage\usuarios\cadastro\cadastro.component.html" />
+    <None Remove="ClientApp\src\app\sysPage\usuarios\cadastro\cadastro.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\usuarios\cadastro\cadastro.component.ts" />
+    <None Remove="ClientApp\src\app\sysPage\usuarios\historico\cadastro.historico\cadastro.historico.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\usuarios\historico\pesquisa.historico\pesquisa.historico.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\usuarios\permissao\cadastro.permissao\cadastro.permissao.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\usuarios\permissao\pesquisa.permissao\pesquisa.permissao.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\utilitarios\banco\cadastro.banco\cadastro.banco.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\utilitarios\banco\pesquisa.banco\pesquisa.banco.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\utilitarios\contato\cadastro.contato\cadastro.contato.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\utilitarios\contato\pesquisa.contato\pesquisa.contato.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\utilitarios\email\cadastro.email\cadastro.email.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\utilitarios\email\pesquisa.email\pesquisa.email.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\utilitarios\estado-aprovacao\cadastro.estado-aprovacao\cadastro.estado-aprovacao.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\utilitarios\estado-aprovacao\pesquisa.estado-aprovacao\pesquisa.estado-aprovacao.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\utilitarios\forma-pagamento\cadastro.forma-pagamento\cadastro.forma-pagamento.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\utilitarios\forma-pagamento\pesquisa.forma-pagamento\pesquisa.forma-pagamento.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\utilitarios\sexo\cadastro.sexo\cadastro.sexo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\utilitarios\sexo\pesquisa.sexo\pesquisa.sexo.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\utilitarios\telefone\cadastro.telefone\cadastro.telefone.component.spec.ts" />
+    <None Remove="ClientApp\src\app\sysPage\utilitarios\telefone\pesquisa.telefone\pesquisa.telefone.component.spec.ts" />
+    <None Remove="ClientApp\src\styles\router-theme.scss" />
+    <None Remove="ClientApp\src\styles\styles.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\model\cep\endereco.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\cep\estado.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\compras\estadoPedido.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\compras\listaInsumo.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\compras\listaMadeira.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\utilitarios\notaFiscal.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\compras\pedido.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\empresas\empresa.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\financeiro\controleSaldo.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\financeiro\custo.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\financeiro\despesa.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\financeiro\dre.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\financeiro\listaBancoEmpresa.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\financeiro\receita.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\financeiro\tipoCusto.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\financeiro\tipoDespesa.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\financeiro\tipoReceita.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\fornecedores\fornecedor.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\fornecedores\listaBancaria.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\fornecedores\listaContato.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\fornecedores\tipoFornecedor.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\fretes\frete.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\fretes\itemTabelaFrete.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\fretes\motorista.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\fretes\tabelaFrete.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\fretes\transportadora.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\fretes\veiculo.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\insumos\controleInsumo.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\insumos\estoqueInsumo.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\insumos\insumo.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\insumos\tipoInsumo.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\usuarios\historico.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\usuarios\permissao.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\utilitarios\banco.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\utilitarios\contato.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\utilitarios\email.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\utilitarios\estadoAprovacao.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\utilitarios\formaPagamento.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\utilitarios\logReg.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\utilitarios\secEdit.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\utilitarios\sexo.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\utilitarios\telefone.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\cep\cidade.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\cep\endereco.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\cep\estado.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\compras\estadoPedido.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\compras\listaInsumo.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\compras\listaMadeira.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\utilitarios\notaFiscal.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\compras\pedido.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\empresas\empresa.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\financeiro\controleSaldo.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\financeiro\custo.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\financeiro\despesa.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\financeiro\dre.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\financeiro\listaBancoEmpresa.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\financeiro\receita.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\financeiro\tipoCusto.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\financeiro\tipoDespesa.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\financeiro\tipoReceita.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\fornecedores\fornecedor.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\fornecedores\listaBancaria.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\fornecedores\listaContato.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\fornecedores\tipoFornecedor.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\fretes\frete.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\fretes\itemTabelaFrete.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\fretes\motorista.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\fretes\tabelaFrete.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\fretes\transportadora.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\fretes\veiculo.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\insumos\controleInsumo.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\insumos\estoqueInsumo.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\insumos\insumo.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\insumos\tipoInsumo.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\usuarios\historico.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\usuarios\permissao.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\utilitarios\banco.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\utilitarios\contato.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\utilitarios\email.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\utilitarios\estadoAprovacao.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\utilitarios\formaPagamento.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\utilitarios\logReg.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\utilitarios\secEdit.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\utilitarios\sexo.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\utilitarios\telefone.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SysWas.Domain\SysWas.Domain.csproj" />
+    <ProjectReference Include="..\SysWas.Repository\SysWas.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+
+    <TypeScriptCompile Include="ClientApp\src\app\authorization\guard.routes.ts" />
+
+    <TypeScriptCompile Include="ClientApp\src\app\model\cep\cidade.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\usuarios\usuario.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\usuarios\usuario.service.ts" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\notafiscal\" />
+    <Folder Include="wwwroot\sysImg\" />
+    <Folder Include="wwwroot\projetos\" />
+  </ItemGroup>
+
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
+      <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+</Project>

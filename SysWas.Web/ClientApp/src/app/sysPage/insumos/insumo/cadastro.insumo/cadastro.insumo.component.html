@@ -1,0 +1,157 @@
+
+<form style="align-items: center;">
+  <div class="mx-4 pt-3 my-3 p-3 rounded shadow" align="center">
+
+    <h1 class="h4 mb-3 text-center"
+        *ngIf="!insumo.id || insumo == null">
+      Cadastrar Insumo
+    </h1>
+
+    <h1 class="h4 mb-3 text-center"
+        *ngIf="insumo.id">
+      Alterar Insumo
+    </h1>
+
+   
+
+    <!--ITEM 1-->
+    <div class="center-items-custom">
+      <mat-form-field class="mid-center">
+        <input matInput type="text"
+               placeholder="Nome"
+               name="nome"
+               [formControl]="nomeFc"
+               [errorStateMatcher]="matcher"
+               [(ngModel)]="insumo.nome" />
+
+        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+
+        <mat-error *ngIf="nomeFc.hasError('required')">
+          Nome é <strong>obrigatorio!</strong>
+        </mat-error>
+        <!--<mat-error *ngIf="descricaoFc.hasError('minlength')">
+    No minimo <strong>10 caracteres!</strong>
+  </mat-error>-->
+      </mat-form-field>
+</div>
+
+    <!--FIM 1-->
+    <!--ITEM descricao-->
+    <div class="center-items-custom">
+      <mat-form-field class="mid-center">
+        <input matInput type="text"
+               placeholder="Descrição"
+               name="descricao"
+               [formControl]="descricaoFc"
+               [errorStateMatcher]="matcher"
+               [(ngModel)]="insumo.descricao" />
+        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+
+        <mat-error *ngIf="descricaoFc.hasError('required')">
+          Descrição é <strong>obrigatorio!</strong>
+        </mat-error>
+        <!--<mat-error *ngIf="descricaoFc.hasError('minlength')">
+        No minimo <strong>10 caracteres!</strong>
+      </mat-error>-->
+
+      </mat-form-field>
+    </div>
+
+    <!--FIM ITEM descricao-->
+    
+
+    <div class="center-items-custom">
+
+      <!--SELECT-->
+
+      <mat-form-field>
+        <mat-label>Tipo</mat-label>
+        <mat-select [formControl]="tipoFc" [(ngModel)]="selectedTipo" [compareWith]="compareFn" required>
+
+          <mat-option *ngFor="let tipo of tipos" [value]="tipo">
+            {{tipo.tipo}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="tipoFc.hasError('required')">
+          Tipo é <strong>obrigatorio</strong>
+        </mat-error>
+        <!--<mat-hint>{{tipoIdFc.value?.sound}}</mat-hint>-->
+      </mat-form-field>
+
+
+
+      <!--FIM-->
+      <!--SELECT-->
+
+      <mat-form-field>
+        <mat-label>Controle</mat-label>
+        <mat-select [formControl]="controleFc" [(ngModel)]="selectedControle" [compareWith]="compareFn" required>
+
+          <mat-option *ngFor="let controle of controles" [value]="controle">
+            {{controle.nome}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="controleFc.hasError('required')">
+          Controle é <strong>obrigatorio</strong>
+        </mat-error>
+        <!--<mat-hint>{{controleIdFc.value?.sound}}</mat-hint>-->
+      </mat-form-field>
+
+
+      <!--FIM-->
+    </div>
+
+    
+
+
+    <div class="container-fluid">
+
+      <button mat-raised-button class="px-5 mx-3 shadow-button rounded shadow"
+              type="submit" (click)="cadastrar()"
+              [disabled]="ativar_spinner ||
+              (descricaoFc.invalid || nomeFc.invalid || tipoFc.invalid || controleFc.invalid )"
+              *ngIf="!insumo.id || insumo == null">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+        Cadastrar
+      </button>
+
+      <button mat-raised-button class="px-5 mx-3 shadow-button rounded shadow"
+              type="submit" (click)="cadastrar()"
+              [disabled]="ativar_spinner ||
+              (descricaoFc.invalid || nomeFc.invalid || tipoFc.invalid || controleFc.invalid )"
+              *ngIf="insumo.id">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+        Alterar
+      </button>
+
+
+      <span></span>
+
+      <button mat-raised-button class="px-5 mx-3" color="warn" type="submit" [routerLink]='["/pesquisa-insumo"]'>
+        Cancelar
+      </button>
+
+    </div>
+
+    <div class="alert alert-danger" *ngIf="mensagem">
+      {{mensagem}}
+    </div>
+
+
+
+
+
+
+
+    <!--id: number;
+  espessura: number;
+  largura: number;
+  comprimento: number;
+  preBenef: boolean;
+  tipoId: number;
+  especieId: number;
+  controleId: number;-->
+
+
+  </div>
+</form>

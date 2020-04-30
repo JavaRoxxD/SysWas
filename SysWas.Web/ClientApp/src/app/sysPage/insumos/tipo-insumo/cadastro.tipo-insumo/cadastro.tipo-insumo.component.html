@@ -1,0 +1,74 @@
+
+<form style="align-items: center;">
+  <div class="mx-4 pt-3 my-3 p-3 rounded shadow" align="center">
+
+    <h1 class="h4 mb-3 text-center"
+        *ngIf="!tipoInsumo.id || tipoInsumo == null">
+      Cadastrar Tipo Insumo
+    </h1>
+
+    <h1 class="h4 mb-3 text-center"
+        *ngIf="tipoInsumo.id">
+      Alterar Tipo Insumo
+    </h1>
+
+
+    <!--ITEM descricao-->
+    <div class="center-items-custom">
+      <mat-form-field class="mid-center">
+        <input matInput type="text"
+               placeholder="Nome do Tipo"
+               name="tipo"
+               [formControl]="tipoFc"
+               [errorStateMatcher]="matcher"
+               [(ngModel)]="tipoInsumo.tipo" />
+        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+
+        <mat-error *ngIf="tipoFc.hasError('required')">
+          Tipo é <strong>obrigatorio!</strong>
+        </mat-error>
+        <!--<mat-error *ngIf="descricaoFc.hasError('minlength')">
+          No minimo <strong>10 caracteres!</strong>
+        </mat-error>-->
+
+      </mat-form-field>
+    </div>
+
+    <!--FIM ITEM descricao-->
+
+
+    <div class="container-fluid">
+
+      <button mat-raised-button class="px-5 mx-3 shadow-button rounded shadow"
+              type="submit" (click)="cadastrar()"
+              [disabled]="ativar_spinner || (tipoFc.invalid )"
+              *ngIf="!tipoInsumo.id || tipoInsumo == null">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+        Cadastrar
+      </button>
+
+      <button mat-raised-button class="px-5 mx-3 shadow-button rounded shadow"
+              type="submit" (click)="cadastrar()"
+              [disabled]="ativar_spinner || (tipoFc.invalid )"
+              *ngIf="tipoInsumo.id">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+        Alterar
+      </button>
+
+
+      <span></span>
+
+      <button mat-raised-button class="px-5 mx-3" color="warn" type="submit" [routerLink]='["/pesquisa-tipo-insumo"]'>
+        Cancelar
+      </button>
+
+    </div>
+
+    <div class="alert alert-danger" *ngIf="mensagem">
+      {{mensagem}}
+    </div>
+
+
+
+  </div>
+</form>

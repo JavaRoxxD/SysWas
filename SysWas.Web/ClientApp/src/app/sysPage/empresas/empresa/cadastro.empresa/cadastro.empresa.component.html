@@ -1,0 +1,204 @@
+
+<form style="align-items: center;">
+  <div class="mx-4 pt-3 my-3 p-3 rounded shadow" align="center">
+
+    <h1 class="h4 mb-3 text-center"
+        *ngIf="!empresa.id || empresa == null">
+      Cadastrar Empresa
+    </h1>
+
+    <h1 class="h4 mb-3 text-center"
+        *ngIf="empresa.id">
+      Alterar Empresa
+    </h1>
+
+    <!--EMPRESA-->
+
+    <div class="center-items-custom">
+      <mat-form-field class="mid-center">
+        <input matInput type="text"
+               placeholder="CNPJ"
+               name="cnpj"
+               [formControl]="cnpjFc"
+               [errorStateMatcher]="matcher"
+               [textMask]="{mask: maskCnpj}" />
+        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+
+        <mat-error *ngIf="cnpjFc.hasError('required')">
+          CNPJ é <strong>obrigatorio!</strong>
+        </mat-error>
+        <!--<mat-error *ngIf="descricaoFc.hasError('minlength')">
+        No minimo <strong>10 caracteres!</strong>
+      </mat-error>-->
+
+      </mat-form-field>
+    </div>
+
+    <div class="center-items-custom">
+      <mat-form-field class="mid-center">
+        <input matInput type="text"
+               placeholder="Nome Fantasia"
+               name="nomeFantasia"
+               [formControl]="nomeFantasiaFc"
+               [errorStateMatcher]="matcher" />
+        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+
+        <mat-error *ngIf="nomeFantasiaFc.hasError('required')">
+          Nome Fantasia é <strong>obrigatorio!</strong>
+        </mat-error>
+        <!--<mat-error *ngIf="descricaoFc.hasError('minlength')">
+        No minimo <strong>10 caracteres!</strong>
+      </mat-error>-->
+
+      </mat-form-field>
+    </div>
+
+    <!--FIM EMPRESA-->
+    <!--ENDERECO -->
+    <div class="center-items-custom">
+      <mat-form-field class="mid-center">
+        <input matInput type="text"
+               placeholder="CEP"
+               name="CEP"
+               [formControl]="cepFc"
+               [errorStateMatcher]="matcher"
+               [textMask]="{mask: mask}"
+               (focusout)="obterEndereco()" />
+
+        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+
+        <mat-error *ngIf="cepFc.hasError('required')">
+          <strong>DIGITE O CEP!!</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!--<button mat-raised-button class="px-5 mx-3 shadow-button rounded shadow"
+            type="submit" (click)="obterEndereco()"
+            [disabled]="enderecoFc.invalid">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+      CEP
+    </button>-->
+
+    </div>
+
+    <div class="center-items-custom">
+      <mat-form-field class="mid-center">
+        <input matInput type="text"
+               placeholder="Logradouro"
+               name="logradouro"
+               [formControl]="logradouroFc"
+               [errorStateMatcher]="matcher" />
+
+        <mat-error *ngIf="logradouroFc.hasError('required')">
+          <strong>INVALIDO</strong>
+        </mat-error>
+
+
+      </mat-form-field>
+
+
+      <mat-form-field class="mid-center">
+        <input matInput type="text"
+               placeholder="Localidade"
+               name="localidade"
+               [formControl]="localidadeFc"
+               [errorStateMatcher]="matcher" />
+
+        <mat-error *ngIf="localidadeFc.hasError('required')">
+          <strong>INVALIDO</strong>
+        </mat-error>
+
+
+      </mat-form-field>
+
+      <mat-form-field class="mid-center">
+        <input matInput type="text"
+               placeholder="Estado"
+               name="uf"
+               [formControl]="ufFc"
+               [errorStateMatcher]="matcher" />
+
+        <mat-error *ngIf="ufFc.hasError('required')">
+          <strong>INVALIDO</strong>
+        </mat-error>
+
+
+      </mat-form-field>
+
+    </div>
+
+
+
+    <!--ENDERECO FIM -->
+
+
+    <div class="center-items-custom">
+      <mat-form-field class="mid-center">
+        <input matInput type="number"
+               placeholder="Nº Endereço"
+               name="numeroEndereco"
+               [formControl]="numeroEnderecoFc"
+               [errorStateMatcher]="matcher" />
+        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+
+        <mat-error *ngIf="numeroEnderecoFc.hasError('required')">
+          Nº do endereço é <strong>obrigatorio!</strong>
+        </mat-error>
+        <!--<mat-error *ngIf="descricaoFc.hasError('minlength')">
+        No minimo <strong>10 caracteres!</strong>
+      </mat-error>-->
+
+      </mat-form-field>
+    </div>
+
+
+    <div class="center-items-custom">
+      <mat-form-field class="mid-center">
+        <input matInput type="text"
+               placeholder="Observação"
+               name="observacao"
+               [formControl]="observacaoFc"
+               [errorStateMatcher]="matcher"
+               />
+
+      </mat-form-field>
+
+    </div>
+
+
+    <div class="container-fluid">
+
+      <button mat-raised-button class="px-5 mx-3 shadow-button rounded shadow"
+              type="submit" (click)="cadastrar()"
+              [disabled]="ativar_spinner ||
+              ( cepFc.invalid || logradouroFc.invalid || localidadeFc.invalid || ufFc.invalid || cnpjFc.invalid || nomeFantasiaFc.invalid || numeroEnderecoFc.invalid || observacaoFc.invalid)"
+              *ngIf="!empresa.id || empresa == null">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+        Cadastrar
+      </button>
+
+      <button mat-raised-button class="px-5 mx-3 shadow-button rounded shadow"
+              type="submit" (click)="cadastrar()"
+              [disabled]="ativar_spinner ||
+              ( cepFc.invalid )"
+              *ngIf="empresa.id">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+        Alterar
+      </button>
+
+
+      <span></span>
+
+      <button mat-raised-button class="px-5 mx-3" color="warn" type="submit" [routerLink]='["/pesquisa-empresa"]'>
+        Cancelar
+      </button>
+
+    </div>
+
+    <div class="alert alert-danger" *ngIf="mensagem">
+      {{mensagem}}
+    </div>
+
+
+  </div>
+</form>

@@ -1,0 +1,247 @@
+
+  <form style="align-items: center;">
+    <div class="mx-4 pt-3 my-3 p-3 rounded shadow" align="center">
+
+      <h1 class="h4 mb-3 text-center"
+          *ngIf="!madeira.id || madeira == null">
+        Cadastrar Madeira
+      </h1>
+
+      <h1 class="h4 mb-3 text-center"
+          *ngIf="madeira.id">
+        Alterar Madeira
+      </h1>
+
+      <input type="file" accept="image/*;capture=camera">
+      <!--ITEM descricao-->
+      <div class="center-items-custom">
+        <mat-form-field class="mid-center">
+          <input matInput type="text"
+                 placeholder="Descrição"
+                 name="descricao"
+                 [formControl]="descricaoFc"
+                 [errorStateMatcher]="matcher"
+                 [(ngModel)]="madeira.descricao" />
+          <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+
+          <mat-error *ngIf="descricaoFc.hasError('required')">
+            Descrição é <strong>obrigatorio!</strong>
+          </mat-error>
+          <!--<mat-error *ngIf="descricaoFc.hasError('minlength')">
+        No minimo <strong>10 caracteres!</strong>
+      </mat-error>-->
+
+        </mat-form-field>
+      </div>
+
+      <!--FIM ITEM descricao-->
+      <!--ITEM 1-->
+      <div class="center-items-custom">
+        <mat-form-field>
+          <input matInput type="number"
+                 placeholder="Espessura"
+                 name="espessura"
+                 class=""
+                 [formControl]="espessuraFc"
+                 [errorStateMatcher]="matcher"
+                 [(ngModel)]="madeira.espessura" />
+          <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+
+          <mat-error *ngIf="espessuraFc.hasError('required')">
+            Espessura é <strong>obrigatorio</strong>
+          </mat-error>
+        </mat-form-field>
+
+
+
+        <!--FIM ITEM 1-->
+        <!--ITEM 2-->
+
+        <mat-form-field>
+          <input matInput type="number"
+                 placeholder="Largura"
+                 name="largura"
+                 class=""
+                 [formControl]="larguraFc"
+                 [errorStateMatcher]="matcher"
+                 [(ngModel)]="madeira.largura" />
+          <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+
+          <mat-error *ngIf="larguraFc.hasError('required')">
+            Largura é <strong>obrigatorio</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!--FIM ITEM 2-->
+        <!--ITEM 3-->
+
+        <mat-form-field>
+          <input matInput type="number"
+                 placeholder="Comprimento"
+                 name="comprimento"
+                 class=""
+                 [formControl]="comprimentoFc"
+                 [errorStateMatcher]="matcher"
+                 [(ngModel)]="madeira.comprimento" />
+          <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+
+          <mat-error *ngIf="comprimentoFc.hasError('required')">
+            Comprimento é <strong>obrigatorio</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!--FIM ITEM 3-->
+      <!--ITEM 4-->
+
+      <div class="center-items-custom">
+
+        <!--SELECT-->
+
+        <mat-form-field>
+          <mat-label>Tipo</mat-label>
+          <mat-select [formControl]="tipoIdFc" [(ngModel)]="selectedTipo" [compareWith]="compareFn" required>
+
+            <mat-option *ngFor="let tipo of tipos" [value]="tipo">
+              {{tipo.tipo}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="tipoIdFc.hasError('required')">
+            Tipo é <strong>obrigatorio</strong>
+          </mat-error>
+          <!--<mat-hint>{{tipoIdFc.value?.sound}}</mat-hint>-->
+        </mat-form-field>
+
+
+
+        <!--FIM-->
+        <!--SELECT-->
+
+        <mat-form-field>
+          <mat-label>Especie</mat-label>
+          <mat-select [formControl]="especieIdFc" [(ngModel)]="selectedEspecie" [compareWith]="compareFn" required>
+
+            <mat-option *ngFor="let especie of especies" [value]="especie">
+              {{especie.especie}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="especieIdFc.hasError('required')">
+            Especie é <strong>obrigatorio</strong>
+          </mat-error>
+          <!--<mat-hint>{{especieIdFc.value?.sound}}</mat-hint>-->
+        </mat-form-field>
+
+
+
+        <!--FIM-->
+        <!--SELECT-->
+
+        <mat-form-field>
+          <mat-label>Controle</mat-label>
+          <mat-select [formControl]="controleIdFc" [(ngModel)]="selectedControle" [compareWith]="compareFn" required>
+
+            <mat-option *ngFor="let controle of controles" [value]="controle">
+              {{controle.nome}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="controleIdFc.hasError('required')">
+            Controle é <strong>obrigatorio</strong>
+          </mat-error>
+          <!--<mat-hint>{{controleIdFc.value?.sound}}</mat-hint>-->
+        </mat-form-field>
+
+
+
+        <!--FIM-->
+
+
+
+
+
+
+      </div>
+
+      <!--FIM ITEM 6-->
+      <!--TEM QUE PEGAR O BOOLEAN-->
+      <!--ITEM CHECKBOX-->
+
+      <section class="center-items-custom">
+        <mat-checkbox matInput id="CheckPreBenef"
+                      name="preBenef"
+                      class="mid-center"
+                      [(ngModel)]="madeira.preBenef"
+                      #preBenef="ngModel"
+                      (change)="checkBoxvalue($event, 'TESTE')">
+
+          Pre-Beneficiada
+
+        </mat-checkbox>
+      </section>
+
+
+      <!--FIM ITEM CHECKBOX-->
+
+
+
+
+      <div class="custom-file  center-items-custom container-fluid">
+
+        <input type="file" class="" id="inputFile" (change)="inputChange($event.target.files)" />
+        <!--<input type="file" #file name="file" id="file" (change)="">-->
+        <!--<label for="inputFile" class="custom-file-label"> Escolha um arquivo </label>-->
+      </div>
+
+
+
+
+      <div class="container-fluid">
+
+        <button mat-raised-button class="px-5 mx-3 shadow-button rounded shadow"
+                type="submit" (click)="cadastrar()"
+                [disabled]="ativar_spinner || (descricaoFc.invalid || espessuraFc.invalid || larguraFc.invalid
+                || comprimentoFc.invalid || tipoIdFc.invalid || especieIdFc.invalid || controleIdFc.invalid )"
+                *ngIf="!madeira.id || madeira == null">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+          Cadastrar
+        </button>
+
+        <button mat-raised-button class="px-5 mx-3 shadow-button rounded shadow"
+                type="submit" (click)="cadastrar()"
+                [disabled]="ativar_spinner || (descricaoFc.invalid || espessuraFc.invalid || larguraFc.invalid
+                || comprimentoFc.invalid || tipoIdFc.invalid || especieIdFc.invalid || controleIdFc.invalid )"
+                *ngIf="madeira.id">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+          Alterar
+        </button>
+
+
+        <span></span>
+
+        <button mat-raised-button class="px-5 mx-3" color="warn" type="submit" [routerLink]='["/pesquisa-madeira"]'>
+          Cancelar
+        </button>
+
+      </div>
+
+      <div class="alert alert-danger" *ngIf="mensagem">
+        {{mensagem}}
+      </div>
+
+
+
+
+
+
+
+      <!--id: number;
+  espessura: number;
+  largura: number;
+  comprimento: number;
+  preBenef: boolean;
+  tipoId: number;
+  especieId: number;
+  controleId: number;-->
+
+
+    </div>
+  </form>

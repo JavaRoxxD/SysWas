@@ -1,0 +1,35 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+
+$theme-primary: mat-palette($mat-green);
+//$theme-accent: mat-palette($mat-deep-purple);
+$theme-accent: mat-palette($mat-gray);
+//$theme-accent: mat-palette($mat-gray);
+$theme-warn: mat-palette($mat-red);
+
+
+
+$theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
+
+
+@include angular-material-theme($theme);
+
+$altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
+
+
+.alternative {
+  @include angular-material-theme($altTheme);
+}
+
+
+.jroxtheme {
+
+  $theme-accent: mat-palette($mat-deep-purple);
+  $theme-accent: mat-palette($mat-amber);
+  $theme-warn: mat-palette($mat-red);
+
+  $jTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
+
+  @include angular-material-theme($jTheme);
+}

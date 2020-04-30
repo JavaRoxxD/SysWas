@@ -1,0 +1,112 @@
+
+<form style="align-items: center;">
+  <div class="mx-4 pt-3 my-3 p-3 rounded shadow" align="center">
+
+    <h1 class="h4 mb-3 text-center"
+        *ngIf="!controleInsumo.id || controleInsumo == null">
+      Cadastrar Controle Insumo
+    </h1>
+
+    <h1 class="h4 mb-3 text-center"
+        *ngIf="controleInsumo.id">
+      Alterar Controle Insumo
+    </h1>
+
+
+    <!--ITEM descricao-->
+    <div class="center-items-custom">
+      <mat-form-field class="mid-center">
+        <input matInput type="text"
+               placeholder="Nome"
+               name="controle"
+               [formControl]="nomeFc"
+               [errorStateMatcher]="matcher"
+               [(ngModel)]="controleInsumo.nome" />
+        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+
+        <mat-error *ngIf="nomeFc.hasError('required')">
+          Nome é <strong>obrigatorio!</strong>
+        </mat-error>
+        <!--<mat-error *ngIf="descricaoFc.hasError('minlength')">
+          No minimo <strong>10 caracteres!</strong>
+        </mat-error>-->
+
+      </mat-form-field>
+    </div>
+
+    <!--FIM ITEM descricao-->
+    <!-- 1 -->
+    <div class="center-items-custom px-5 mx-3">
+      <mat-form-field>
+        <input matInput type="number"
+               placeholder="Quantidade de Alerta %"
+               name="quantAlerta"
+               maxlength="2"
+               class=""
+               [formControl]="quantAlertaFc"
+               [errorStateMatcher]="matcher"
+               [(ngModel)]="controleInsumo.quantAlerta" />
+        <mat-hint>0 Para não alertar!</mat-hint>
+
+        <mat-error *ngIf="quantAlertaFc.hasError('required')">
+          Espessura é <strong>obrigatorio</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!--  2  -->
+
+      <mat-form-field>
+        <input matInput type="number"
+               placeholder="Volume de Alerta %"
+               name="volumeAlerta"
+               maxlength="2"
+               class=""
+               [formControl]="volumeAlertaFc"
+               [errorStateMatcher]="matcher"
+               [(ngModel)]="controleInsumo.volumeAlerta" />
+        <mat-hint>0 Para não alertar!</mat-hint>
+
+        <mat-error *ngIf="volumeAlertaFc.hasError('required')">
+          Volume é <strong>obrigatorio</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+
+
+
+    <div class="container-fluid">
+
+      <button mat-raised-button class="px-5 mx-3 shadow-button rounded shadow"
+              type="submit" (click)="cadastrar()"
+              [disabled]="ativar_spinner || (nomeFc.invalid || quantAlertaFc.invalid || volumeAlertaFc.invalid)"
+              *ngIf="!controleInsumo.id || controleInsumo == null">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+        Cadastrar
+      </button>
+
+      <button mat-raised-button class="px-5 mx-3 shadow-button rounded shadow"
+              type="submit" (click)="cadastrar()"
+              [disabled]="ativar_spinner || (nomeFc.invalid || quantAlertaFc.invalid || volumeAlertaFc.invalid)"
+              *ngIf="controleInsumo.id">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+        Alterar
+      </button>
+
+
+      <span></span>
+
+      <button mat-raised-button class="px-5 mx-3" color="warn" type="submit" [routerLink]='["/pesquisa-controle-insumo"]'>
+        Cancelar
+      </button>
+
+    </div>
+
+    <div class="alert alert-danger" *ngIf="mensagem">
+      {{mensagem}}
+    </div>
+
+
+
+  </div>
+</form>

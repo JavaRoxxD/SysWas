@@ -1,0 +1,27 @@
+.custom-file-label::after {
+
+  content: "Selecionar";
+
+}
+
+.invalid-feedback{
+    display: block;
+}
+
+.full-width {
+    
+  height: 100%;
+  display: block;
+}
+
+.mid-center {
+
+    width: 50%;
+  
+}
+
+div.center-items-custom {
+
+    align-items: center;
+
+}

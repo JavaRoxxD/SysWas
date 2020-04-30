@@ -1,0 +1,9 @@
+{
+
+  "ConnectionStrings": {
+    "SysWasDB": "Server=localhost;Uid=root;Pwd=admin;Database=Sistema"
+  }
+
+
+}
+
